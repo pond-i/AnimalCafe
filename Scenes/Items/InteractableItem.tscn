@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd0kheh641dqw"]
+
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_2nkt4"]
+[ext_resource type="Texture2D" uid="uid://bdu2gnd34nbay" path="res://Sprites/Cafe/Items/TreatShelf.png" id="2_iv57d"]
+
+[node name="InteractableItem" type="Node2D"]
+script = ExtResource("1_2nkt4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(14, 14)
+texture = ExtResource("2_iv57d")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(14, 14)
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq26anm2ytuuu"]
+
+[ext_resource type="PackedScene" uid="uid://bd0kheh641dqw" path="res://Scenes/Items/InteractableItem.tscn" id="1_6dtix"]
+[ext_resource type="Texture2D" uid="uid://b0rfe0rojemk1" path="res://Sprites/Cafe/Items/GreenTea.png" id="2_ljjv3"]
+[ext_resource type="Script" path="res://Scripts/GreenTeaFull.gd" id="2_n5u8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yh6w"]
+size = Vector2(6, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ib7l"]
+size = Vector2(166, 130)
+
+[node name="GreenTea" instance=ExtResource("1_6dtix")]
+script = ExtResource("2_n5u8d")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ljjv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_7yh6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+shape = SubResource("RectangleShape2D_6ib7l")

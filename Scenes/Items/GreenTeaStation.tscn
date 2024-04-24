@@ -1,0 +1,261 @@
+[gd_scene load_steps=27 format=3 uid="uid://kxe0f70jmnm1"]
+
+[ext_resource type="PackedScene" uid="uid://bd0kheh641dqw" path="res://Scenes/Items/InteractableItem.tscn" id="1_ja1xe"]
+[ext_resource type="Script" path="res://Scripts/GreenTeaStation.gd" id="2_dwgqh"]
+[ext_resource type="Texture2D" uid="uid://denuw5itfop82" path="res://Sprites/Cafe/Items/GreenTeaPot.png" id="2_wye5t"]
+[ext_resource type="Texture2D" uid="uid://mfssgmoad3fe" path="res://Sprites/Cafe/Items/Plate.png" id="3_csqvc"]
+[ext_resource type="Texture2D" uid="uid://b0rfe0rojemk1" path="res://Sprites/Cafe/Items/GreenTea.png" id="5_v72a1"]
+[ext_resource type="Texture2D" uid="uid://mstb8bgx4h2g" path="res://Sprites/Cafe/Items/GreenTeaPour.png" id="6_8l64x"]
+[ext_resource type="PackedScene" uid="uid://lmqi3wk7h3vg" path="res://Scenes/Items/MugHover.tscn" id="7_rtxbf"]
+
+[sub_resource type="Curve" id="Curve_0bol4"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iv5l3"]
+curve = SubResource("Curve_0bol4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1s4n4"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 15, 5)
+gravity = Vector3(0, -100, 0)
+linear_accel_max = 19.11
+radial_accel_min = 16.56
+radial_accel_max = 54.78
+radial_accel_curve = SubResource("CurveTexture_iv5l3")
+tangential_accel_min = -86.62
+tangential_accel_max = 22.93
+scale_min = 0.2
+scale_max = 0.2
+
+[sub_resource type="Gradient" id="Gradient_ky1p3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.737255, 0.745098, 0.737255, 0.243137)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvwtt"]
+gradient = SubResource("Gradient_ky1p3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66yjr"]
+size = Vector2(16.7143, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i14qk"]
+size = Vector2(342, 258)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meekg"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(0, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6t5r"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(0, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxje7"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(6, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_did7c"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(12, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67cba"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(18, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u13qa"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(24, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvma6"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(30, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi7t8"]
+atlas = ExtResource("6_8l64x")
+region = Rect2(36, 0, 6, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdtx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meekg")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6t5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxje7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_did7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67cba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67cba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u13qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvma6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi7t8")
+}],
+"loop": false,
+"name": &"Fill",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_yru6w"]
+resource_name = "Pour"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.1, 2.5),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(-42.455, -27), Vector2(-42.455, -98.754), Vector2(2, -92), Vector2(2, -92), Vector2(-42.455, -98.754), Vector2(-42.455, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.5, 2.1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.674709, 0.674709, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Items/CoffeeMug")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Fill"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_knt33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-42.455, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78lpa"]
+_data = {
+"Pour": SubResource("Animation_yru6w"),
+"RESET": SubResource("Animation_knt33")
+}
+
+[node name="GreenTeaStation" instance=ExtResource("1_ja1xe")]
+script = ExtResource("2_dwgqh")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-42.455, -27)
+texture = ExtResource("2_wye5t")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" index="0"]
+position = Vector2(4.31821, -0.571428)
+process_material = SubResource("ParticleProcessMaterial_1s4n4")
+texture = SubResource("GradientTexture2D_dvwtt")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.0714286, -0.928571)
+shape = SubResource("RectangleShape2D_66yjr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+shape = SubResource("RectangleShape2D_i14qk")
+
+[node name="Plate" type="Sprite2D" parent="." index="3"]
+position = Vector2(-21, 29)
+rotation = 3.14159
+scale = Vector2(20.131, 14)
+texture = ExtResource("3_csqvc")
+
+[node name="Plate2" type="Sprite2D" parent="." index="4"]
+position = Vector2(21, 29)
+rotation = 3.14159
+scale = Vector2(20.131, 14)
+texture = ExtResource("3_csqvc")
+
+[node name="MugHover" parent="." index="5" instance=ExtResource("7_rtxbf")]
+position = Vector2(77.4, -13)
+
+[node name="Items" type="Node2D" parent="." index="6"]
+position = Vector2(77.45, -13)
+scale = Vector2(14, 14)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Items" index="0"]
+visible = false
+position = Vector2(-0.5, -3.91071)
+process_material = SubResource("ParticleProcessMaterial_1s4n4")
+texture = SubResource("GradientTexture2D_dvwtt")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.24
+
+[node name="CoffeeMug" type="AnimatedSprite2D" parent="Items" index="1"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xdtx7")
+animation = &"Fill"
+autoplay = "Empty"
+
+[node name="GreenTea" type="Sprite2D" parent="Items" index="2"]
+visible = false
+texture = ExtResource("5_v72a1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_78lpa")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

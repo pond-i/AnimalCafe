@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://lmqi3wk7h3vg"]
+
+[ext_resource type="PackedScene" uid="uid://bd0kheh641dqw" path="res://Scenes/Items/InteractableItem.tscn" id="1_ilpt5"]
+[ext_resource type="Script" path="res://Scripts/MugHover.gd" id="2_bik2a"]
+[ext_resource type="Texture2D" uid="uid://b83qtvmq8pbhi" path="res://Sprites/Cafe/Items/CoffeeMug.png" id="2_hr0g6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wm8p"]
+size = Vector2(6, 6.28572)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsgua"]
+size = Vector2(494, 434)
+
+[node name="MugHover" instance=ExtResource("1_ilpt5")]
+script = ExtResource("2_bik2a")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_hr0g6")
+
+[node name="Area2D" parent="." index="1"]
+z_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+z_index = 2
+position = Vector2(-1.70299e-07, 0.0714282)
+shape = SubResource("RectangleShape2D_6wm8p")
+
+[node name="Area2D2" parent="." index="2"]
+z_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+z_index = 2
+shape = SubResource("RectangleShape2D_xsgua")

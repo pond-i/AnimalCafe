@@ -1,0 +1,265 @@
+[gd_scene load_steps=30 format=3 uid="uid://dvbysastymexi"]
+
+[ext_resource type="Texture2D" uid="uid://uhmnpwxvriba" path="res://Sprites/Cafe/WindowBackground.png" id="1_juw2h"]
+[ext_resource type="Texture2D" uid="uid://dbsvfr3831175" path="res://Sprites/Cafe/Cafe.png" id="1_tpk1f"]
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_u2q7l"]
+[ext_resource type="Texture2D" uid="uid://bip56vavh35o4" path="res://Sprites/Cafe/CafeBottom.png" id="2_pmeqy"]
+[ext_resource type="PackedScene" uid="uid://cr0uyv1n1ofq5" path="res://Scenes/Items/CoffeeMachine.tscn" id="3_a3d42"]
+[ext_resource type="Texture2D" uid="uid://gxtm8av5pdmi" path="res://Sprites/Cafe/CafeWindow.png" id="3_bypcd"]
+[ext_resource type="PackedScene" uid="uid://damevxburygte" path="res://Scenes/Player.tscn" id="3_qxofs"]
+[ext_resource type="PackedScene" uid="uid://dm1scwgu5jng6" path="res://Scenes/Customer.tscn" id="4_d5bqq"]
+[ext_resource type="PackedScene" uid="uid://u31tpnoudrau" path="res://Scenes/Items/CashRegister.tscn" id="5_1uysm"]
+[ext_resource type="PackedScene" uid="uid://mr81ddd30lq7" path="res://Scenes/Items/Oven.tscn" id="5_j5meq"]
+[ext_resource type="PackedScene" uid="uid://y2uu8i0pmncm" path="res://Scenes/Items/TreatShelf.tscn" id="5_jouye"]
+[ext_resource type="PackedScene" uid="uid://mwrwc5jqjq6a" path="res://Scenes/Items/CoffeeMug.tscn" id="6_6ulso"]
+[ext_resource type="PackedScene" uid="uid://bi8xjjdpwgf60" path="res://Scenes/Items/PlaceMat.tscn" id="7_g1e8l"]
+[ext_resource type="PackedScene" uid="uid://kxe0f70jmnm1" path="res://Scenes/Items/GreenTeaStation.tscn" id="7_jco76"]
+[ext_resource type="Script" path="res://Scripts/TreatShelf.gd" id="13_tkpf6"]
+
+[sub_resource type="Gradient" id="Gradient_4howw"]
+colors = PackedColorArray(0.164706, 0.12549, 0.164706, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x35hs"]
+gradient = SubResource("Gradient_4howw")
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxrn5"]
+size = Vector2(9.9667, 35.6741)
+
+[sub_resource type="Gradient" id="Gradient_rpvkl"]
+offsets = PackedFloat32Array(0.998012, 1)
+colors = PackedColorArray(0.337255, 0.403922, 0.580392, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rba7q"]
+gradient = SubResource("Gradient_rpvkl")
+
+[sub_resource type="Curve" id="Curve_rjihb"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.866534, -291.789), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w0ogv"]
+curve = SubResource("Curve_rjihb")
+
+[sub_resource type="Curve" id="Curve_tbdny"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.11753, 124.211), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3huei"]
+curve = SubResource("Curve_tbdny")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_am3ap"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+angle_min = -720.0
+angle_max = -43.7
+angle_curve = SubResource("CurveTexture_w0ogv")
+direction = Vector3(4.35, 0.415, 0)
+spread = 30.63
+gravity = Vector3(55, 98, 0)
+linear_accel_min = 74.52
+linear_accel_max = 89.73
+linear_accel_curve = SubResource("CurveTexture_3huei")
+scale_min = 0.0
+scale_max = 0.3
+
+[sub_resource type="Gradient" id="Gradient_bv4mb"]
+offsets = PackedFloat32Array(0.995927)
+colors = PackedColorArray(0.437802, 0.616362, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b1g3t"]
+gradient = SubResource("Gradient_bv4mb")
+
+[sub_resource type="Gradient" id="Gradient_0nl3c"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.164706, 0.121569, 0.164706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1ffgq"]
+gradient = SubResource("Gradient_0nl3c")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_u2q7l")
+
+[node name="Main" type="Node" parent="."]
+
+[node name="CafeSprites" type="Node" parent="Main"]
+
+[node name="Background" type="Sprite2D" parent="Main/CafeSprites"]
+position = Vector2(959, 542)
+scale = Vector2(30.0313, 16.875)
+texture = SubResource("GradientTexture2D_x35hs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Main/CafeSprites/Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/CafeSprites/Background/StaticBody2D"]
+position = Vector2(24.308, -9.18518)
+shape = SubResource("RectangleShape2D_bxrn5")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Main/CafeSprites/Background/StaticBody2D"]
+position = Vector2(-22.7097, -9.18519)
+shape = SubResource("RectangleShape2D_bxrn5")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="BackgroundWindow" type="Sprite2D" parent="Main/CafeSprites"]
+position = Vector2(588, 230.75)
+scale = Vector2(4.0625, 3.33594)
+texture = SubResource("GradientTexture2D_rba7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/CafeSprites"]
+position = Vector2(594, 231)
+scale = Vector2(14, 14)
+texture = ExtResource("1_juw2h")
+
+[node name="Rain" type="GPUParticles2D" parent="Main/CafeSprites"]
+position = Vector2(594, 115)
+scale = Vector2(14, 14)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_am3ap")
+texture = SubResource("GradientTexture2D_b1g3t")
+lifetime = 0.4
+fixed_fps = 60
+
+[node name="CafeMain" type="Sprite2D" parent="Main/CafeSprites"]
+position = Vector2(987, 528)
+scale = Vector2(14, 14)
+texture = ExtResource("1_tpk1f")
+
+[node name="CafeWindow" type="Sprite2D" parent="Main/CafeSprites"]
+position = Vector2(588, 234)
+scale = Vector2(14, 14)
+texture = ExtResource("3_bypcd")
+
+[node name="BackItems" type="Node" parent="Main"]
+
+[node name="CoffeeMug" parent="Main/BackItems" instance=ExtResource("6_6ulso")]
+position = Vector2(1271, 482)
+
+[node name="CoffeeMug2" parent="Main/BackItems" instance=ExtResource("6_6ulso")]
+position = Vector2(1271, 427)
+
+[node name="CoffeeMug3" parent="Main/BackItems" instance=ExtResource("6_6ulso")]
+position = Vector2(1271, 372)
+
+[node name="CoffeeMug4" parent="Main/BackItems" instance=ExtResource("6_6ulso")]
+position = Vector2(1182, 482)
+
+[node name="CoffeeMug5" parent="Main/BackItems" instance=ExtResource("6_6ulso")]
+position = Vector2(1182, 427)
+
+[node name="CoffeeMachine" parent="Main/BackItems" instance=ExtResource("3_a3d42")]
+position = Vector2(1421, 409)
+
+[node name="Oven" parent="Main/BackItems" instance=ExtResource("5_j5meq")]
+position = Vector2(942, 454)
+
+[node name="GreenTeaStation" parent="Main/BackItems" instance=ExtResource("7_jco76")]
+position = Vector2(559, 465)
+
+[node name="CashRegister" parent="Main/BackItems" instance=ExtResource("5_1uysm")]
+position = Vector2(757, 461)
+
+[node name="Player" parent="Main" instance=ExtResource("3_qxofs")]
+position = Vector2(1169, 633)
+
+[node name="CafeBottom" type="Sprite2D" parent="Main"]
+position = Vector2(987, 829)
+scale = Vector2(14, 14)
+texture = ExtResource("2_pmeqy")
+
+[node name="TopSide" type="Node" parent="Main"]
+
+[node name="FrontItems" type="Node" parent="Main/TopSide"]
+
+[node name="Placemat" parent="Main/TopSide/FrontItems" instance=ExtResource("7_g1e8l")]
+position = Vector2(854, 717)
+
+[node name="Placemat2" parent="Main/TopSide/FrontItems" instance=ExtResource("7_g1e8l")]
+position = Vector2(1133, 717)
+
+[node name="Placemat3" parent="Main/TopSide/FrontItems" instance=ExtResource("7_g1e8l")]
+position = Vector2(1412, 717)
+
+[node name="TreatShelf" parent="Main/TopSide/FrontItems" instance=ExtResource("5_jouye")]
+position = Vector2(594, 689)
+script = ExtResource("13_tkpf6")
+
+[node name="Customers" type="Node2D" parent="Main/TopSide"]
+
+[node name="Customer" parent="Main/TopSide/Customers" node_paths=PackedStringArray("table_position") instance=ExtResource("4_d5bqq")]
+position = Vector2(329, 939)
+table_number = 1
+table_position = NodePath("../../CustomerSpawner/Seats/Seat1")
+
+[node name="Customer2" parent="Main/TopSide/Customers" node_paths=PackedStringArray("table_position") instance=ExtResource("4_d5bqq")]
+position = Vector2(329, 939)
+table_number = 2
+table_position = NodePath("../../CustomerSpawner/Seats/Seat2")
+
+[node name="Customer3" parent="Main/TopSide/Customers" node_paths=PackedStringArray("table_position") instance=ExtResource("4_d5bqq")]
+position = Vector2(329, 939)
+table_number = 3
+table_position = NodePath("../../CustomerSpawner/Seats/Seat3")
+
+[node name="CustomerSpawner" type="Node2D" parent="Main/TopSide"]
+
+[node name="Seats" type="Node2D" parent="Main/TopSide/CustomerSpawner"]
+
+[node name="Seat1" type="Marker2D" parent="Main/TopSide/CustomerSpawner/Seats"]
+position = Vector2(854, 836)
+
+[node name="Seat2" type="Marker2D" parent="Main/TopSide/CustomerSpawner/Seats"]
+position = Vector2(1134, 836)
+
+[node name="Seat3" type="Marker2D" parent="Main/TopSide/CustomerSpawner/Seats"]
+position = Vector2(1414, 836)
+
+[node name="Extras" type="Node" parent="Main/TopSide"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/TopSide/Extras"]
+z_index = 12
+position = Vector2(959, 1152)
+scale = Vector2(7.50781, 360.5)
+texture = SubResource("GradientTexture1D_1ffgq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Main/TopSide/Extras"]
+z_index = 12
+position = Vector2(212.5, 667.125)
+scale = Vector2(1.67578, 1330.25)
+texture = SubResource("GradientTexture1D_1ffgq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Main/TopSide/Extras"]
+z_index = 12
+position = Vector2(1767.75, 667)
+scale = Vector2(1.72461, 1330)
+texture = SubResource("GradientTexture1D_1ffgq")
+
+[connection signal="CoffeeMugPickUp" from="Main/BackItems/CoffeeMug" to="Main/Player" method="signal_coffee_mug"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMug" to="Main/Player" method="_on_coffee_mug_send_hand"]
+[connection signal="CoffeeMugPickUp" from="Main/BackItems/CoffeeMug2" to="Main/Player" method="signal_coffee_mug"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMug2" to="Main/Player" method="_on_coffee_mug_send_hand"]
+[connection signal="CoffeeMugPickUp" from="Main/BackItems/CoffeeMug3" to="Main/Player" method="signal_coffee_mug"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMug3" to="Main/Player" method="_on_coffee_mug_send_hand"]
+[connection signal="CoffeeMugPickUp" from="Main/BackItems/CoffeeMug4" to="Main/Player" method="signal_coffee_mug"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMug4" to="Main/Player" method="_on_coffee_mug_send_hand"]
+[connection signal="CoffeeMugPickUp" from="Main/BackItems/CoffeeMug5" to="Main/Player" method="signal_coffee_mug"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMug5" to="Main/Player" method="_on_coffee_mug_send_hand"]
+[connection signal="SendHand" from="Main/BackItems/CoffeeMachine" to="Main/Player" method="_on_coffee_machine_send_hand"]
+[connection signal="SendHand" from="Main/BackItems/Oven" to="Main/Player" method="_on_oven_send_hand"]
+[connection signal="SendHand" from="Main/BackItems/GreenTeaStation" to="Main/Player" method="_on_green_tea_station_send_hand"]
+[connection signal="SendHand" from="Main/BackItems/CashRegister" to="Main/Player" method="_on_cash_register_send_hand"]
+[connection signal="SendHand" from="Main/TopSide/FrontItems/Placemat" to="Main/Player" method="_on_placemat_send_hand"]
+[connection signal="SendItem" from="Main/TopSide/FrontItems/Placemat" to="Main/TopSide/Customers/Customer" method="_on_placemat_send_item"]
+[connection signal="SendHand" from="Main/TopSide/FrontItems/Placemat2" to="Main/Player" method="_on_placemat_send_hand"]
+[connection signal="SendItem" from="Main/TopSide/FrontItems/Placemat2" to="Main/TopSide/Customers/Customer2" method="_on_placemat_2_send_item"]
+[connection signal="SendHand" from="Main/TopSide/FrontItems/Placemat3" to="Main/Player" method="_on_placemat_send_hand"]
+[connection signal="SendItem" from="Main/TopSide/FrontItems/Placemat3" to="Main/TopSide/Customers/Customer3" method="_on_placemat_3_send_item"]
+[connection signal="SendHand" from="Main/TopSide/FrontItems/TreatShelf" to="Main/Player" method="_on_treat_shelf_send_hand"]
+[connection signal="ClearPlate" from="Main/TopSide/Customers/Customer" to="Main/TopSide/FrontItems/Placemat" method="_on_customer_clear_plate"]
+[connection signal="ClearPlate" from="Main/TopSide/Customers/Customer2" to="Main/TopSide/FrontItems/Placemat2" method="_on_customer_clear_plate"]
+[connection signal="ClearPlate" from="Main/TopSide/Customers/Customer3" to="Main/TopSide/FrontItems/Placemat3" method="_on_customer_clear_plate"]
+
+[editable path="Main/Player"]

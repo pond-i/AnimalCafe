@@ -1,0 +1,300 @@
+[gd_scene load_steps=30 format=3 uid="uid://bi8xjjdpwgf60"]
+
+[ext_resource type="PackedScene" uid="uid://bd0kheh641dqw" path="res://Scenes/Items/InteractableItem.tscn" id="1_y1sn8"]
+[ext_resource type="Script" path="res://Scripts/PlaceMat.gd" id="2_fo0a1"]
+[ext_resource type="Texture2D" uid="uid://mfssgmoad3fe" path="res://Sprites/Cafe/Items/Plate.png" id="2_i1dcq"]
+[ext_resource type="Texture2D" uid="uid://b83qtvmq8pbhi" path="res://Sprites/Cafe/Items/CoffeeMug.png" id="3_2d1qw"]
+[ext_resource type="Texture2D" uid="uid://bejdeiio67hjx" path="res://Sprites/Cafe/Items/Muffin_1.png" id="3_ool57"]
+[ext_resource type="Texture2D" uid="uid://bb7ax3421dt18" path="res://Sprites/Cafe/Items/Muffin_2.png" id="4_awl2v"]
+[ext_resource type="Texture2D" uid="uid://bprybq0fqviap" path="res://Sprites/Cafe/Items/CoffeeMugFull.png" id="4_k7k4b"]
+[ext_resource type="Texture2D" uid="uid://b0rfe0rojemk1" path="res://Sprites/Cafe/Items/GreenTea.png" id="8_taprg"]
+[ext_resource type="Texture2D" uid="uid://bpsqq1b7lnu3r" path="res://Sprites/Cafe/Items/Money.png" id="9_ee2fs"]
+
+[sub_resource type="Animation" id="Animation_vdfno"]
+resource_name = "CashMoney"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Money:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(-3.8147e-06, -14), Vector2(-3.8147e-06, -91), Vector2(-3.8147e-06, -42), Vector2(-3.8147e-06, -56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Money:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Money:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_xxonl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Money:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.8147e-06, -14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Money:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Money:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bd1vq"]
+_data = {
+"CashMoney": SubResource("Animation_vdfno"),
+"RESET": SubResource("Animation_xxonl")
+}
+
+[sub_resource type="Curve" id="Curve_ystrn"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n38a8"]
+curve = SubResource("Curve_ystrn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byb8j"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 15, 5)
+gravity = Vector3(0, -100, 0)
+linear_accel_max = 19.11
+radial_accel_min = 16.56
+radial_accel_max = 54.78
+radial_accel_curve = SubResource("CurveTexture_n38a8")
+tangential_accel_min = -86.62
+tangential_accel_max = 22.93
+scale_min = 0.2
+scale_max = 0.2
+
+[sub_resource type="Gradient" id="Gradient_j8gxe"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.737255, 0.745098, 0.737255, 0.243137)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eqsu4"]
+gradient = SubResource("Gradient_j8gxe")
+
+[sub_resource type="Curve" id="Curve_g6eg1"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3p4c7"]
+curve = SubResource("Curve_g6eg1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0wca"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 15, 5)
+gravity = Vector3(0, -100, 0)
+linear_accel_max = 19.11
+radial_accel_min = 16.56
+radial_accel_max = 54.78
+radial_accel_curve = SubResource("CurveTexture_3p4c7")
+tangential_accel_min = -86.62
+tangential_accel_max = 22.93
+scale_min = 0.2
+scale_max = 0.2
+
+[sub_resource type="Gradient" id="Gradient_5owem"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.737255, 0.745098, 0.737255, 0.243137)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6www"]
+gradient = SubResource("Gradient_5owem")
+
+[sub_resource type="Curve" id="Curve_g3m7c"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yqyr0"]
+curve = SubResource("Curve_g3m7c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wllsd"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 15, 5)
+gravity = Vector3(0, -100, 0)
+linear_accel_max = 19.11
+radial_accel_min = 16.56
+radial_accel_max = 54.78
+radial_accel_curve = SubResource("CurveTexture_yqyr0")
+tangential_accel_min = -86.62
+tangential_accel_max = 22.93
+scale_min = 0.2
+scale_max = 0.2
+
+[sub_resource type="Gradient" id="Gradient_re4b2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.737255, 0.745098, 0.737255, 0.243137)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_buqp0"]
+gradient = SubResource("Gradient_re4b2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqgc1"]
+size = Vector2(13.2857, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdw08"]
+size = Vector2(384, 306)
+
+[node name="Placemat" instance=ExtResource("1_y1sn8")]
+script = ExtResource("2_fo0a1")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_i1dcq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+root_node = NodePath("../Items/Muffin2Cooked/GPUParticles2D")
+libraries = {
+"": SubResource("AnimationLibrary_bd1vq")
+}
+
+[node name="Items" type="Node2D" parent="." index="2"]
+
+[node name="Muffin1" type="Sprite2D" parent="Items" index="0"]
+visible = false
+position = Vector2(-7.10543e-15, -35)
+scale = Vector2(14, 14)
+texture = ExtResource("3_ool57")
+
+[node name="Muffin2" type="Sprite2D" parent="Items" index="1"]
+visible = false
+position = Vector2(1.90735e-06, -35)
+scale = Vector2(14, 14)
+texture = ExtResource("4_awl2v")
+
+[node name="CoffeeMugFull" type="Sprite2D" parent="Items" index="2"]
+visible = false
+position = Vector2(7.00001, -42)
+scale = Vector2(14, 14)
+texture = ExtResource("4_k7k4b")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Items/CoffeeMugFull" index="0"]
+position = Vector2(-0.5, -4.33929)
+process_material = SubResource("ParticleProcessMaterial_byb8j")
+texture = SubResource("GradientTexture2D_eqsu4")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.24
+
+[node name="CoffeeMug" type="Sprite2D" parent="Items" index="3"]
+visible = false
+position = Vector2(7, -42)
+scale = Vector2(14, 14)
+texture = ExtResource("3_2d1qw")
+
+[node name="Muffin1Cooked" type="Sprite2D" parent="Items" index="4"]
+visible = false
+self_modulate = Color(0.5, 0.4, 0.4, 1)
+position = Vector2(-7.10543e-15, -35)
+scale = Vector2(14, 14)
+texture = ExtResource("3_ool57")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Items/Muffin1Cooked" index="0"]
+position = Vector2(-0.5, -4.33929)
+process_material = SubResource("ParticleProcessMaterial_b0wca")
+texture = SubResource("GradientTexture2D_w6www")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.18
+
+[node name="Muffin2Cooked" type="Sprite2D" parent="Items" index="5"]
+visible = false
+self_modulate = Color(0.5, 0.4, 0.4, 1)
+position = Vector2(1.90735e-06, -35)
+scale = Vector2(14, 14)
+texture = ExtResource("4_awl2v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Items/Muffin2Cooked" index="0"]
+position = Vector2(-0.5, -4.33929)
+process_material = SubResource("ParticleProcessMaterial_b0wca")
+texture = SubResource("GradientTexture2D_w6www")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.18
+
+[node name="GreenTea" type="Sprite2D" parent="Items" index="6"]
+visible = false
+position = Vector2(7, -42)
+scale = Vector2(14, 14)
+texture = ExtResource("8_taprg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Items/GreenTea" index="0"]
+position = Vector2(-0.5, -3.91071)
+process_material = SubResource("ParticleProcessMaterial_wllsd")
+texture = SubResource("GradientTexture2D_buqp0")
+preprocess = 50.3
+speed_scale = 0.8
+explosiveness = 0.24
+
+[node name="Money" type="Sprite2D" parent="Items" index="7"]
+visible = false
+position = Vector2(-3.8147e-06, -14)
+scale = Vector2(14, 14)
+texture = ExtResource("9_ee2fs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_kqgc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+shape = SubResource("RectangleShape2D_kdw08")

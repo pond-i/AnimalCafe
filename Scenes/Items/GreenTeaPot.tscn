@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://q7vo4hrobbce"]
+
+[ext_resource type="PackedScene" uid="uid://bd0kheh641dqw" path="res://Scenes/Items/InteractableItem.tscn" id="1_47uey"]
+[ext_resource type="Script" path="res://Scripts/GreenTeaPot.gd" id="2_2jykr"]
+[ext_resource type="Texture2D" uid="uid://denuw5itfop82" path="res://Sprites/Cafe/Items/GreenTeaPot.png" id="3_f757n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7frfg"]
+size = Vector2(9, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geed8"]
+size = Vector2(220, 180)
+
+[node name="GreenTeaPot" instance=ExtResource("1_47uey")]
+script = ExtResource("2_2jykr")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_f757n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_7frfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+shape = SubResource("RectangleShape2D_geed8")
